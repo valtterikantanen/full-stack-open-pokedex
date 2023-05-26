@@ -35,3 +35,4 @@ jobs:
           heroku_email: "valtteri.kantanen@helsinki.fi"
           healthcheck: "https://polar-meadow-41009.herokuapp.com/health"
           checkstring: "ok"
+          rollbackonhealthcheckfailed: true
