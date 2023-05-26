@@ -44,7 +44,6 @@ primary_region = "arn"
 
   [[services.script_checks]]
     command       = "/app/health_check.sh"
-    args          = ["a", "b", "c"]
     grace_period  = "1s"
     interval      = "5s"
     restart_limit = 0
