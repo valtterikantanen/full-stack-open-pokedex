@@ -41,7 +41,7 @@ jobs:
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
       - name: Build successful notification
-        if: ${{ success() && github.event_name == 'push'}}
+        if: ${{ success() && github.event_name == 'push' }}
         uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
         with:
           severity: info
@@ -49,7 +49,7 @@ jobs:
           description: The changes made by ${{ github.event.commits[0].author.username }} are now live at https://polar-meadow-41009.herokuapp.com/
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Build failure notification
-        if: ${{ failure() && github.event_name == 'push'}}
+        if: ${{ failure() && github.event_name == 'push' }}
         uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
         with:
           severity: error
