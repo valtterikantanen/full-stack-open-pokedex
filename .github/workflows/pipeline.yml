@@ -40,23 +40,7 @@ jobs:
           healthcheck: "https://polar-meadow-41009.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
-      - name: Build successful notification
-        if: ${{ success() && github.event_name == 'push' }}
-        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
-        with:
-          severity: info
-          text: A new version of Pokedex deployed
-          description: The changes made by ${{ github.event.commits[0].author.username }} are now live at https://polar-meadow-41009.herokuapp.com/
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      - name: Build failure notification
-        if: ${{ failure() && github.event_name == 'push' }}
-        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
-        with:
-          severity: error
-          text: Build failed
-          description: Commit ${{ github.event.commits[0].url }} by ${{ github.event.commits[0].author.username }} broke something
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      
+
   tag_release:
     needs: simple_deployment_pipeline
     runs-on: ubuntu-20.04
